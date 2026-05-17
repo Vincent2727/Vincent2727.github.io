@@ -1,0 +1,299 @@
+/* --- Root Cyber Theme Variables --- */
+:root {
+    --bg-color: #0d1117;       /* Dark tech background */
+    --card-bg: #161b22;       /* Slate dark for cards */
+    --primary-neon: #00ff66;  /* Classic Matrix green */
+    --secondary-neon: #00e5ff;/* Cyber Cyan */
+    --text-color: #c9d1d9;    /* Code text color */
+    --text-muted: #8b949e;    /* Dimmed text color */
+    --border-color: #30363d;  /* Clean panel border */
+    --font-terminal: 'Share Tech Mono', 'Fira Code', monospace;
+}
+
+/* --- Global Configurations --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-terminal);
+}
+
+body {
+    padding-top: 70px; /* Offset for sticky navbar */
+}
+
+a {
+    color: var(--primary-neon);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-neon);
+    text-shadow: 0 0 8px var(--secondary-neon);
+}
+
+/* --- Navigation Bar --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(13, 17, 23, 0.9);
+    border-bottom: 2px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.navbar .logo a {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-neon);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+/* --- Hero / Bio Section --- */
+.hero-section {
+    padding: 60px 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: 900px;
+}
+
+/* Terminal-like Avatar Frame */
+.profile-frame {
+    border: 2px solid var(--primary-neon);
+    padding: 8px;
+    background: var(--card-bg);
+    box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
+    border-radius: 4px;
+}
+
+.profile-frame img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(30%) contrast(120%);
+}
+
+.bio-content h1 {
+    font-size: 2.5rem;
+    color: var(--primary-neon);
+    text-shadow: 0 0 5px rgba(0, 255, 102, 0.5);
+    margin-bottom: 5px;
+}
+
+.bio-content h2 {
+    font-size: 1.1rem;
+    color: var(--secondary-neon);
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.bio-text {
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+    font-size: 1.5rem;
+}
+
+/* --- Main Structure Sections --- */
+.matrix-section {
+    padding: 60px 10%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.section-title {
+    color: var(--secondary-neon);
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+/* --- Grid & Cyber Cards --- */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* Terminal Mock Card styling */
+.cyber-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.05s ease, border-color 0.05s ease-out, box-shadow 0.05s ease-out;
+}
+
+.cyber-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary-neon);
+    box-shadow: 0 4px 20px rgba(0, 255, 102, 0.15);
+}
+
+.card-link:hover .cyber-card {
+    cursor: pointer;
+    transform: translateY(-4px); /* Keeps the smooth lift */
+    
+    /* Subtle color change highlight */
+    border-color: rgba(0, 255, 102, 0.4); 
+    
+    /* Much less prominent glow (lowered opacity to 0.08 and blur radius) */
+    box-shadow: 0 4px 12px rgba(0, 255, 102, 0.08); 
+    
+    /* When hovering ON, make the highlight apply instantly */
+    transition: 
+        transform 0.2s ease, 
+        border-color 0s, 
+        box-shadow 0s;
+}
+
+/* Simulated terminal top bar controls */
+.card-header {
+    background-color: #21262d;
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.dot.red { background-color: #ff5f56; }
+.dot.yellow { background-color: #ffbd2e; }
+.dot.green { background-color: #27c93f; }
+
+.card-title {
+    margin-left: 10px;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+.card-body {
+    padding: 20px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Tech tag badges */
+.tags {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tags span {
+    font-size: 0.75rem;
+    background: rgba(0, 229, 255, 0.1);
+    color: var(--secondary-neon);
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+/* --- Skills Layout Customization --- */
+.skills-container {
+    max-width: 100%;
+}
+
+.skills-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.skills-grid strong {
+    color: var(--primary-neon);
+}
+
+/* --- Footer Configuration --- */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid var(--border-color);
+    background-color: #161b22;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+footer .copyright {
+    margin-top: 10px;
+    font-size: 0.8rem;
+}
+
+/* Responsive configurations for mobile sizes */
+@media (max-width: 768px) {
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .social-icons {
+        justify-content: center;
+    }
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+.card-link:hover .skills-card {
+    border-color: rgba(0, 229, 255, 0.15); /* Cyber Cyan at 40% opacity */
+    /*box-shadow: 0 4px 12px rgba(0, 229, 255, 0.08); /* Low-intensity cyan glow */
+    
+    transition: 
+        transform 0.2s ease, 
+        border-color 0s, 
+        /*box-shadow 0s;*/
+}
+
+/* Hover OFF: Inherits the super-fast 0.05s snap back from .cyber-card base */
+.skills-grid div {
+    padding: 4px 0;
+    border-bottom: 1px dashed rgba(48, 54, 61, 0.5); /* Adds a digital grid line under each skill row */
+}
+
+.skills-grid div:last-child {
+    border-bottom: none; /* Removes the dashed line from the final row */
+}
